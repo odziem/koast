@@ -8,12 +8,18 @@ var exec = require('child_process').exec;
 rg.setLogLevel('info');
 
 gulp.task('mocha', rg.mocha({
-  files: 'lib/**/*.test.js',
+  files: [
+    'index.test.js',
+    'lib/**/*.test.js'
+  ],
   reporter: 'nyan'
 }));
 
 gulp.task('mocha-watch-run', rg.mocha({
-  files: 'lib/**/*.test.js',
+  files: [
+    'index.test.js',
+    'lib/**/*.test.js'
+  ],
   reporter: 'nyan',
   errorHandler: function (err) {
     gulpUtil.log(err);

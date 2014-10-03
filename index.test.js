@@ -4,15 +4,15 @@
 
 var expect = require('chai').expect;
 
-var koast = require('../index');
-koast.setConfigDirectory('tests/config/');
-koast.setEnvironment('test');
+var koast = require('./index');
+koast.config.setConfigDirectory('tests/config/');
+koast.config.setEnvironment('test');
 
 describe('Basic app setup.', function () {
-  var appConfig = koast.getConfig('app');
+  var appConfig = koast.config.getConfig('app');
 
   it('Initialize a db connection.', function(done) {
-    koast.createDatabaseConnections()
+    koast.db.createDatabaseConnections()
       .then(function (connection) {
         console.log('Resolved the connection');
         expect(connection).to.not.be.undefined;
